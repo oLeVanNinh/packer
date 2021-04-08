@@ -1,0 +1,42 @@
+---
+- name: Provision Image
+  hosts: default
+  become: true
+  remote_user: ubuntu
+
+  tasks:
+    - name: Install nginx
+      apt:
+        update_cache: yes
+        name: nginx
+        state: latest
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+    - name: Install curl
+      apt:
+        name: curl
+    - name: Add node source repo
+      shell: "curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -"
+    - name: Add yarn source repo
+
+    - name: Install ruby dependencies
+      apt:
+        pkg:
+          - git-core
+          - zlib1g-dev
+          - build-essential
+          - libssl-dev
+          - libreadline-dev
+          - libyaml-dev
+          - libsqlite3-dev
+          - sqlite3
+          - libxml2-dev
+          - libxslt1-dev
+          - libcurl4-openssl-dev
+          - software-properties-common
+          - libffi-dev
+          - nodejs
+          - yarn
+        state: present
