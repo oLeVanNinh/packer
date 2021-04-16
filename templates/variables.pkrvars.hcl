@@ -1,0 +1,6 @@
+region = "us-east-1"
+project =  "monitoring"
+env = "dev"
+profile = "packer"
+instance_type = "t3.small"
+volume_size ="30"
